@@ -4,6 +4,10 @@ This is a regular `create-react-app` generated with the redux template.
 
 It contains redux toolkit, react-redux and react-router.
 
+## Installation
+
+Run `yarn install` to install all the dependencies and `yarn start` to run the application.
+
 ## Components
 
 The app contains a few components in the features/tuits folder. TuitDetail,
