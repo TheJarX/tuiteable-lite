@@ -1,17 +1,34 @@
 import React from "react";
 import { Box, ButtonGroup, Text, Button } from "@chakra-ui/core";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import TuitItem from "./TuitItem";
+import { tuitDeleted } from "./TuitSlice";
+import { useParams, useHistory } from "react-router-dom";
 
-function TuitDetail(props) {
+function TuitDetail() {
+  const history = useHistory();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const tuit = useSelector((state) => state.tuit.tuits[id]);
+
+  const handleClick = (e) => {
+    dispatch(tuitDeleted(id));
+    history.replace("/tuits");
+  };
   return (
     <Box width={250} m="auto" pt={4}>
       <Text textAlign="center" mb={4} fontSize="2xl">
         Tuit Details
       </Text>
-      <TuitItem />
+      <TuitItem {...{ ...tuit, id }} />
       <ButtonGroup spacing={4} justifyContent="flex-end" d="flex">
-        <Button variantColor="red">Delete</Button>
-        <Button variantColor="teal">Edit</Button>
+        <Button variantColor="red" onClick={handleClick}>
+          Delete
+        </Button>
+        <Link to={`/tuits/${id}/edit`}>
+          <Button variantColor="teal">Edit</Button>
+        </Link>
       </ButtonGroup>
     </Box>
   );
