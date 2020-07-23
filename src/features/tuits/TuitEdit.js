@@ -17,7 +17,10 @@ function TuitEdit(props) {
   const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const tuit = useSelector((state) => state.tuit.tuits[id]);
+  const tuit = useSelector((state) =>
+    state.tuit.tuits.find((tuit) => tuit.id === id)
+  );
+
   const [newTuit, setNewTuit] = useState({ id, ...tuit });
 
   const handleSubmit = (e) => {

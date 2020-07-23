@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { tuitAdded } from "./TuitSlice";
+import { tuitAdded, createdTuit } from "./TuitSlice";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/core";
 
 function TuitForm(props) {
@@ -12,7 +12,7 @@ function TuitForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(tuitAdded(tuit));
+    dispatch(createdTuit(tuit));
   };
 
   const handleChange = (e) => {

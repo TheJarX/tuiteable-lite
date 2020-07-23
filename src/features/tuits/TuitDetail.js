@@ -10,18 +10,19 @@ function TuitDetail() {
   const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const tuit = useSelector((state) => state.tuit.tuits[id]);
+  const tuit = useSelector((state) => state.tuit.tuits);
 
   const handleClick = (e) => {
-    dispatch(tuitDeleted(id));
-    history.replace("/tuits");
+    // dispatch(tuitDeleted(id));
+    // history.replace("/tuits");
+    console.log(tuit);
   };
   return (
     <Box width={250} m="auto" pt={4}>
       <Text textAlign="center" mb={4} fontSize="2xl">
         Tuit Details
       </Text>
-      <TuitItem {...{ ...tuit, id }} />
+      <TuitItem {...tuit} />
       <ButtonGroup spacing={4} justifyContent="flex-end" d="flex">
         <Button variantColor="red" onClick={handleClick}>
           Delete
