@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Box minHeight="100vh" backgroundColor="blackAlpha.100" textAlign="left">
         <Switch>
-          <Route path="/tuits" exact>
+          <Route path=["/tuits", "/"] exact>
             <TuitsList />
           </Route>
           <Route path="/tuits/:id" exact>
